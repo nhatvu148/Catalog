@@ -45,6 +45,10 @@
 
 - kubectl logs catalog-deployment-756886c7df-8x8h5 -f #watch logs
 
+# Unit Test:
+
+- dotnet new xunit -n Catalog.UnitTests
+
 # VSCode Extensions:
 
 - MongoDB for VSCode
