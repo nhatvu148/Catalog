@@ -12,6 +12,11 @@
 # Docker build:
 
 - docker build -t catalog:v1 .
+- docker network create net5
+- docker network ls
+- docker run -d --rm --name mongo -p 27017:27017 -v mongodb_data:/data/db -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=123456789 --network=net5 mongo
+
+- docker run -it --rm -p 8089:80 -e MongoDbSettings:Host=mongo -e MongoDbSettings:Password=123456789 --network=net5 catalog:v1
 
 # VSCode Extensions:
 
