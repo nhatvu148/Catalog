@@ -25,6 +25,16 @@
 - docker rmi catalog:v1 nhatvu148/catalog:v1
 - docker run -it --rm -p 8089:80 -e MongoDbSettings:Host=mongo -e MongoDbSettings:Password=123456789 --network=net5 nhatvu148/catalog:v1
 
+# Kubernetes:
+
+- kubectl config current-context
+- kubectl create secret generic catalog-secrets --from-literal=mongodb-password='123456789'
+- kubectl apply -f k8s/
+- kubectl get deployments
+- kubectl get pods
+- kubectl get statefulsets
+- kubectl logs catalog-deployment-86db5967b4-bksrm #pod id
+
 # VSCode Extensions:
 
 - MongoDB for VSCode
