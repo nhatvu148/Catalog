@@ -9,6 +9,10 @@
 - dotnet user-secrets init
 - dotnet user-secrets set MongoDbSettings:Password 123456789
 
+# Docker build:
+
+- docker build -t catalog:v1 .
+
 # VSCode Extensions:
 
 - MongoDB for VSCode
