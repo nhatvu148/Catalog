@@ -35,6 +35,11 @@
 - kubectl get statefulsets
 - kubectl logs catalog-deployment-86db5967b4-bksrm #pod id
 
+- kubectl get pods -w #watch mode
+- kubectl delete pod catalog-deployment-86db5967b4-bksrm
+
+- kubectl scale deployments/catalog-deployment --replicas=3
+
 # VSCode Extensions:
 
 - MongoDB for VSCode
