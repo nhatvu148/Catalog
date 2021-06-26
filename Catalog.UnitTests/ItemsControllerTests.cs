@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Catalog.Api.Controllers;
 using Catalog.Api.Dtos;
@@ -35,7 +36,7 @@ namespace Catalog.UnitTests
         }
 
         [Fact]
-        public async Task GetItemAsync_WithexistingItem_ReturnsExpectedItem() //UnitOfWork_StateUnderTest_ExpectedBehavior()
+        public async Task GetItemAsync_WithExistingItem_ReturnsExpectedItem() //UnitOfWork_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
             var expectedItem = CreateRandomItem();
@@ -53,7 +54,7 @@ namespace Catalog.UnitTests
         }
 
         [Fact]
-        public async Task GetItemsAsync_WithexistingItems_ReturnsAllItems() //UnitOfWork_StateUnderTest_ExpectedBehavior()
+        public async Task GetItemsAsync_WithExistingItems_ReturnsAllItems() //UnitOfWork_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
             var expectedItems = new[] { CreateRandomItem(), CreateRandomItem(), CreateRandomItem() };
@@ -126,6 +127,33 @@ namespace Catalog.UnitTests
 
             // Assert
             result.Should().BeOfType<NoContentResult>();
+        }
+
+        [Fact]
+        public async Task GetItemsAsync_WithMatchingItems_ReturnsMatchingItems() //UnitOfWork_StateUnderTest_ExpectedBehavior()
+        {
+            // Arrange
+            var allItems = new[]
+            {
+                new Item(){ Name = "Potion"  },
+                new Item(){ Name = "Antidote"  },
+                new Item(){ Name = "Hi-Potion"  }
+                };
+
+            var nameToMatch = "Potion";
+
+            repositoryStub.Setup(repo => repo.GetItemsAsync())
+                .ReturnsAsync(allItems);
+
+            var controller = new ItemsController(repositoryStub.Object, loggerStub.Object);
+
+            // Act
+            IEnumerable<ItemDto> foundItems = await controller.GetItemsAsync(nameToMatch);
+
+            // Assert
+            foundItems.Should().OnlyContain(
+                item => item.Name == allItems[0].Name || item.Name == allItems[2].Name
+            );
         }
 
         private Item CreateRandomItem()
