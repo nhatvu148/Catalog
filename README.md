@@ -51,7 +51,10 @@
 - Move to Catalog.UnitTests and add reference: dotnet add reference ../Catalog.Api/Catalog.Api.csproj
 - dotnet add package Microsoft.Extensions.Logging.Abstractions
 - dotnet add package moq
+- dotnet add package FluentAssertions
+- dotnet test
 
 # VSCode Extensions:
 
 - MongoDB for VSCode
+- .NET Core Test Explorer
