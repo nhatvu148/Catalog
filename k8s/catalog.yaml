@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: catalog
-          image: nhatvu148/catalog:v1
+          image: nhatvu148/catalog:v2
           resources:
             limits:
               memory: "128Mi" # 1Mi = 1024 kibibytes

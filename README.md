@@ -25,6 +25,9 @@
 - docker rmi catalog:v1 nhatvu148/catalog:v1
 - docker run -it --rm -p 8089:80 -e MongoDbSettings:Host=mongo -e MongoDbSettings:Password=123456789 --network=net5 nhatvu148/catalog:v1
 
+- docker build -t nhatvu148/catalog:v2 .
+- docker push nhatvu148/catalog:v2
+
 # Kubernetes:
 
 - kubectl config current-context
@@ -39,6 +42,8 @@
 - kubectl delete pod catalog-deployment-86db5967b4-bksrm
 
 - kubectl scale deployments/catalog-deployment --replicas=3
+
+- kubectl logs catalog-deployment-756886c7df-8x8h5 -f #watch logs
 
 # VSCode Extensions:
 
