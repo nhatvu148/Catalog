@@ -48,6 +48,9 @@
 # Unit Test:
 
 - dotnet new xunit -n Catalog.UnitTests
+- Move to Catalog.UnitTests and add reference: dotnet add reference ../Catalog.Api/Catalog.Api.csproj
+- dotnet add package Microsoft.Extensions.Logging.Abstractions
+- dotnet add package moq
 
 # VSCode Extensions:
 
