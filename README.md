@@ -1,3 +1,7 @@
+# Reference:
+
+- https://www.freecodecamp.org/news/create-a-rest-api-with-dot-net-5-and-c-sharp/
+
 # Commands:
 
 - dotnet new webapi -n Catalog
