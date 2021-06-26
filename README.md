@@ -22,6 +22,8 @@
 
 - docker tag catalog:v1 nhatvu148/catalog:v1
 - docker push nhatvu148/catalog:v1
+- docker rmi catalog:v1 nhatvu148/catalog:v1
+- docker run -it --rm -p 8089:80 -e MongoDbSettings:Host=mongo -e MongoDbSettings:Password=123456789 --network=net5 nhatvu148/catalog:v1
 
 # VSCode Extensions:
 
